@@ -1,7 +1,7 @@
 ****************
 * Project 3
 * CS 361
-* 9 April 2026
+* 24 April 2026
 * Ado Maksic & Davis Garman
 ****************
 
@@ -23,3 +23,21 @@ To compile the files, execute the following from the root directory:
 
 To run the simulator, provide the name of the input text file describing the TM and tape content:
   $ java tm.TMSimulator file0.txt
+
+PROGRAM DESIGN AND IMPORTANT CONCEPTS:
+The core of this program uses an object-oriented approach to map out the model of a turing machine. The problem consists of parsing a machine definition, creating an internal graph of states, and simulating tape behavior. 
+
+An important design choice we made is how the bi-infinite tape is implemented. Since a standard array cannot grow infinitely in both positive and negative directions without massive performance issues, our tape inside Tape.java uses a HashMap. The keys act as indices along the tape (0, 1, -1, 2, -2, etc.), and the values represent the symbols. Since spots that haven't been visited are blank, they don't constantly consume memory block allocations. When reading, if a key doesn't exist, it just defaults to a blank. 
+
+TM.java controls the logic loops, interacting with the TMState collection and Tape until the machine encounters the deterministic haltingState. TMSimulator.java translates the linear text sequence into the correct math rules using division based lookup, ensuring state instructions are correctly matched.
+
+TESTING:
+We tested the program against the provided text file cases to confirm that our outputs matched lengths and exact text strings expected. 
+
+DISCUSSION:
+One initial concept challenge was designing around a bi-infinite space without allocating excessive chunks of empty arrays. Once we understood that we only care about cells the machine explicitly visits or writes to, switching from an array-based tape to a map-based tape became straightforward and solved the scaling problem effectively.
+
+SOURCES:
+https://www.geeksforgeeks.org/theory-of-computation/turing-machine-in-toc/
+https://ecealgo.com/materials/lecture_slides/lec8.pdf
+https://introcs.cs.princeton.edu/java/52turing/
