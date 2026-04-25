@@ -1,9 +1,7 @@
-package fa.tm;
+package tm;
 
 /**
- * Adds a state to the TM instance
- * @param name is the label of the state 
- *
+ * Minimal TM interface for tape operations
  */
 public interface TMInterface{
 
