@@ -15,6 +15,10 @@ public class Tape {
     private int minVisited;
     private int maxVisited;
 
+    /**
+     * Constructs a tape from input formatting
+     * @param input The input sequence to write to the tape
+     */
     public Tape(String input) {
         this.cells = new HashMap<>();
         this.head = 0;
@@ -29,10 +33,18 @@ public class Tape {
         }
     }
 
+    /**
+     * Reads the current symbol under head
+     * @return symbol
+     */
     public int read() {
         return cells.getOrDefault(head, 0);
     }
 
+    /**
+     * Writes a symbol under head
+     * @param symbol The symbol to write
+     */
     public void write(int symbol) {
         if (symbol == 0) {
             cells.remove(head);
@@ -41,6 +53,10 @@ public class Tape {
         }
     }
 
+    /**
+     * Moves head in a direction
+     * @param direction The direction to move
+     */
     public void move(Direction direction) {
         if (direction == Direction.L) {
             head--;
@@ -51,6 +67,10 @@ public class Tape {
         if (head > maxVisited) maxVisited = head;
     }
 
+    /**
+     * Retrieves visited content from min to max bounds
+     * @return The visited sequence
+     */
     public String visitedContent() {
         StringBuilder sb = new StringBuilder();
         for (int i = minVisited; i <= maxVisited; i++) {

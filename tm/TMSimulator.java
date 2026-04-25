@@ -14,6 +14,10 @@ public class TMSimulator implements TMInterface {
     private TM tm;
     private Tape tape;
 
+    /**
+     * Program execution entry point
+     * @param args Command-line arguments
+     */
     public static void main(String[] args) {
         if (args.length != 1) {
             return;
@@ -28,6 +32,11 @@ public class TMSimulator implements TMInterface {
         System.out.println(output);
     }
 
+    /**
+     * Loads TM parameters and tape data from a file
+     * @param fileName Name of the file
+     * @return true if successful, false otherwise
+     */
     private boolean loadFromFile(String fileName) {
         try (BufferedReader br = Files.newBufferedReader(Path.of(fileName))) {
             String line1 = br.readLine();
@@ -75,6 +84,11 @@ public class TMSimulator implements TMInterface {
         }
     }
 
+    /**
+     * Reads a symbol on the tape and validates it
+     * @param name The expected symbol
+     * @return true if matches under head
+     */
     @Override
     public boolean read(String name) {
         if (tape == null) return false;
@@ -86,6 +100,11 @@ public class TMSimulator implements TMInterface {
         }
     }
 
+    /**
+     * Moves head in given direction
+     * @param dir The movement direction
+     * @return true if successful
+     */
     @Override
     public boolean scan(Direction dir) {
         if (tape == null || dir == null) return false;
@@ -93,6 +112,11 @@ public class TMSimulator implements TMInterface {
         return true;
     }
 
+    /**
+     * Writes symbol onto the current tape cell
+     * @param name The symbol to write
+     * @return true if successful format
+     */
     @Override
     public boolean write(String name) {
         if (tape == null) return false;
