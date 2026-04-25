@@ -1,7 +1,7 @@
 package tm;
 /**
 * Single TM state with transition indexed by reading the symbol
-* @author adomaksic, davisgrmn
+* @author davisgrmn, adomaksic
 */
 public class TMState {
     private final int id;

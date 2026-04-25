@@ -2,7 +2,7 @@ package tm;
 /**
 * Type enumeration for the direction
 * Includes both L for left, R for right
-* @author adomaksic, davisgrmn
+* @author davisgrmn, adomaksic
 */
 public enum Direction {
     L,
